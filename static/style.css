@@ -1,0 +1,30 @@
+/* Overrides or additional styles to complement Bootstrap */
+.bg-primary {
+    background-color: #3776ab !important; /* Python Blue */
+}
+
+.text-primary {
+    color: #3776ab !important;
+}
+
+.btn-primary {
+    background-color: #3776ab;
+    border-color: #3776ab;
+}
+
+.btn-primary:hover {
+    background-color: #2a5a8a;
+    border-color: #2a5a8a;
+}
+
+.hero {
+    transition: transform 0.3s;
+}
+
+.career-card {
+    transition: transform 0.3s;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+}
