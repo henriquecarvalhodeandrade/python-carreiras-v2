@@ -1,2 +1,12 @@
 Flask
 gunicorn
+email_validator
+flask
+flask-sqlalchemy
+gunicorn
+psycopg2-binary
+flask
+flask-login
+flask-sqlalchemy
+gunicorn
+psycopg2-binary
