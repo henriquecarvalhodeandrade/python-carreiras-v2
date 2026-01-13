@@ -1,24 +1,26 @@
 import os
 from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
+# No Replit, você não precisa do load_dotenv() se estiver usando os Secrets do painel lateral, 
+# mas mantê-lo não faz mal.
 
-load_dotenv()
-
-# No Supabase, a URL geralmente termina com ?sslmode=require 
-# ou você configura via código como abaixo
-db_url = os.getenv('DATABASE_URL')
+db_url = os.environ.get('DATABASE_URL')
 
 if not db_url:
-    raise ValueError("DATABASE_URL não encontrada!")
+    raise ValueError("DATABASE_URL não configurada nos Secrets!")
 
-# Para PostgreSQL, geralmente não precisamos do ssl:{} vazio do MySQL
-# Se der erro de certificado, use: connect_args={"sslmode": "require"}
-engine = create_engine(db_url)
+# Adicionamos o connect_args para garantir o SSL exigido pelo Supabase
+engine = create_engine(
+    db_url,
+    connect_args={
+        "sslmode": "require"
+    }
+)
 
 try:
     with engine.connect() as conn:
-        # O text() é obrigatório no SQLAlchemy 2.0+
+        print("Conexão estabelecida com sucesso!")
         resultado = conn.execute(text("SELECT * FROM vagas"))
-        print(resultado.all())
+        # Usar mappings().all() transforma cada linha em um dicionário, facilitando a leitura
+        print(resultado.mappings().all())
 except Exception as e:
     print(f"Erro na conexão: {e}")
