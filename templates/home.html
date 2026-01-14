@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carreiras - Python Carreiras</title>
+    <title>Python Carreiras</title>
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -21,7 +21,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/carreiras">Carreiras</a>
+                        <a class="nav-link" href="/vagas">Vagas</a>
                     </li>
                 </ul>
             </div>
@@ -29,18 +29,12 @@
     </header>
 
     <main class="container my-5">
-        <h2 class="text-primary mb-4 text-center">Carreiras Disponíveis</h2>
-        <div class="row g-4">
-            {% for career in careers %}
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 career-card">
-                    <div class="card-body">
-                        <h3 class="card-title h5 text-primary">{{ career.title }}</h3>
-                        <p class="card-text text-muted">{{ career.description }}</p>
-                    </div>
-                </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8 hero p-5 bg-white rounded-4 shadow">
+                <h2 class="display-4 fw-bold text-primary mb-3">Explore Carreiras em Python</h2>
+                <p class="lead text-muted mb-4">Descubra as melhores oportunidades de carreira para desenvolvedores Python</p>
+                <a href="/carreiras" class="btn btn-primary btn-lg px-5">Ver Carreiras</a>
             </div>
-            {% endfor %}
         </div>
     </main>
 
