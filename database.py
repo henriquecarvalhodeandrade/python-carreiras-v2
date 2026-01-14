@@ -23,7 +23,7 @@ def carrega_vagas_db():
             vagas = []
             for vaga in resultado.all():
                 vagas.append(vaga._asdict())
-            print(vagas)
+            return vagas
 
     except Exception as e:
-        print(f"Erro na conexão: {e}")
+        return(f"Erro na conexão: {e}")
