@@ -27,3 +27,23 @@ def carrega_vagas_db():
 
     except Exception as e:
         return(f"Erro na conexão: {e}")
+
+def carrega_vaga_db(id):
+    try:
+        with engine.connect() as conn:
+            resultado = conn.execute(text(
+                f"SELECT * FROM vagas WHERE id = :val"
+            ), 
+                {"val": id}
+            )
+            
+            registro = resultado.mappings().all()
+            
+            if len(registro) == 0:
+                return None
+                
+            else:
+                return dict(registro[0])
+            
+    except Exception as e:
+        return(f"Erro na conexão: {e}")
